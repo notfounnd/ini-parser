@@ -2,6 +2,30 @@
   "name": "@notfounnd/ini-parser",
   "version": "1.0.0",
   "description": "A professional INI file parser for Node.js with CLI support",
+  "author": "Júnior Sbrissa",
+  "license": "MIT",
+  "homepage": "https://github.com/notfounnd/ini-parser#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/notfounnd/ini-parser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/notfounnd/ini-parser/issues"
+  },
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "parser",
+    "ini",
+    "config",
+    "configuration",
+    "properties",
+    "ini-parser",
+    "ini-file",
+    "cli"
+  ],
   "main": "src/lib/parser.js",
   "bin": {
     "ini-parser": "bin/ini-parser.js"
@@ -10,36 +34,17 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint:check": "eslint src/ test/ --ext .js",
-    "lint:fix": "eslint src/ test/ --ext .js --fix",
+    "lint:check": "eslint bin/ src/ test/ --ext .js",
+    "lint:fix": "eslint bin/ src/ test/ --ext .js --fix",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "format": "npm run format:fix && npm run lint:fix",
     "validate": "npm run format && npm run lint:check && npm run test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/notfounnd/ini-parser.git"
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^14.0.1"
   },
-  "keywords": [
-    "ini",
-    "parser",
-    "config",
-    "configuration",
-    "ini-parser",
-    "ini-file",
-    "cli"
-  ],
-  "author": "",
-  "license": "MIT",
-  "type": "commonjs",
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "bugs": {
-    "url": "https://github.com/notfounnd/ini-parser/issues"
-  },
-  "homepage": "https://github.com/notfounnd/ini-parser#readme",
   "devDependencies": {
     "eslint": "^9.36.0",
     "jest": "^30.2.0",
