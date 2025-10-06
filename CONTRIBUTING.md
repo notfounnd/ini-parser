@@ -653,7 +653,7 @@ it('should return empty object for null input', () => {
 
 4. **Markdown:**
    - Use proper heading hierarchy (`#`, `##`, `###`)
-   - Use code blocks with language specifiers (```javascript, ```bash, ```ini)
+   - Use code blocks with language specifiers (\```javascript, \```bash, \```ini)
    - Use tables for structured data
    - Keep lines under 120 characters when possible
 
