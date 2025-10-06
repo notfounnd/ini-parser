@@ -38,8 +38,8 @@
     "lint:fix": "eslint bin/ src/ test/ --ext .js --fix",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
-    "format": "npm run format:fix && npm run lint:fix",
-    "validate": "npm run format && npm run lint:check && npm run test"
+    "format": "npm run lint:fix && npm run format:fix",
+    "validate": "npm run format && npm run lint:check && npm run format:check && npm run test"
   },
   "dependencies": {
     "chalk": "^4.1.2",
