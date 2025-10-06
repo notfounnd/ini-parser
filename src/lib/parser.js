@@ -341,7 +341,7 @@ function _shouldSplitBySpaces(value) {
  */
 function _formatOutput(rawResult, options) {
   // Guard clause: return raw result if meta mode is enabled
-  if (options.meta !== false) {
+  if (options.meta === true) {
     return rawResult;
   }
 
