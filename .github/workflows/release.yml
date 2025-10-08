@@ -1,0 +1,79 @@
+name: Release
+
+# Manual trigger for controlled releases
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Run in dry-run mode (preview without publishing)'
+        required: false
+        type: boolean
+        default: false
+
+# Permissions needed for release-it to push commits/tags and publish to npm
+permissions:
+  contents: write  # Required to push tags and commits
+  id-token: write  # Required for npm provenance
+
+jobs:
+  release:
+    name: Release to NPM and GitHub
+    runs-on: ubuntu-latest
+
+    steps:
+      # Note: Artifact download is not needed here.
+      # release-it will build and publish directly from the repository code.
+      # The artifact strategy in master workflow is for E2E validation only.
+
+      # Step 1: Checkout code with full history (needed for release-it to analyze commits)
+      - name: Checkout code with full history
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0  # Fetch all history for all branches and tags
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 2: Setup Node.js 22.x with npm registry configuration
+      - name: Setup Node.js 22.x
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22.x
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@notfounnd'
+          cache: 'npm'
+
+      # Step 3: Install dependencies (including release-it)
+      - name: Install dependencies
+        run: npm ci
+
+      # Step 4: Configure git user for release commits
+      - name: Configure git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      # Step 5: Run release-it with conditional dry-run
+      - name: Run release-it
+        run: |
+          if [ "${{ inputs.dry-run }}" == "true" ]; then
+            echo "🔍 Running in DRY-RUN mode (preview only)"
+            npx release-it --dry-run --ci
+          else
+            echo "🚀 Running RELEASE (publishing to NPM and GitHub)"
+            npx release-it --ci
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # Step 6: Display release summary
+      - name: Release summary
+        if: success()
+        run: |
+          if [ "${{ inputs.dry-run }}" == "true" ]; then
+            echo "✅ Dry-run completed successfully"
+            echo "📋 Review the output above to see what would be released"
+          else
+            echo "✅ Release completed successfully"
+            echo "📦 Package published to NPM"
+            echo "🏷️ GitHub Release created"
+          fi
