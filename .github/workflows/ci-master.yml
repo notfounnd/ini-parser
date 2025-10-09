@@ -120,7 +120,9 @@ jobs:
 
       # Step 5: Run E2E tests
       - name: Run E2E tests
-        run: bash test/bin/bin-test.sh
+        run: |
+          cd test/bin
+          bash bin-test.sh
         shell: bash
 
       # Step 6: Verify test results
