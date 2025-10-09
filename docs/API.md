@@ -48,12 +48,6 @@ Install the package as a library dependency:
 npm install @notfounnd/ini-parser
 ```
 
-Or install directly from GitHub (since the package is not yet published on NPM):
-
-```bash
-npm install github:notfounnd/ini-parser
-```
-
 ---
 
 ## Quick Start

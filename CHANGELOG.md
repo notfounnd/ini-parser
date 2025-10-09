@@ -43,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - 8 optimized fixture files covering all parsing scenarios
   - Jest test framework with watch and coverage modes
   - 92.59% overall code coverage
-  - End-to-end testing script for CLI (`test/bin/e2e-test.sh`)
+  - End-to-end testing script for CLI (`test/bin/bin-test.sh`)
 
 - **Code Quality Tools**
   - ESLint configuration (flat config format)
