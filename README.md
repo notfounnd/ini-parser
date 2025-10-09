@@ -1,13 +1,18 @@
 # @notfounnd/ini-parser
 
-<!-- TODO: Inserir badge de NPM version quando publicado -->
-<!-- TODO: Inserir badge de NPM downloads quando publicado -->
-<!-- TODO: Inserir badge de build status quando CI for configurado -->
-<!-- TODO: Inserir badge de coverage quando CI for configurado -->
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org)
+![Release](https://github.com/notfounnd/ini-parser/actions/workflows/release.yml/badge.svg)
+![Master CI/CD](https://github.com/notfounnd/ini-parser/actions/workflows/ci-master.yml/badge.svg)
+[![npm version](https://img.shields.io/npm/v/@notfounnd/ini-parser.svg?logo=npm)](https://www.npmjs.com/package/@notfounnd/ini-parser)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen?logo=nodedotjs&label=Node.js)](https://nodejs.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?logo=rocket&logoColor=fff)](https://opensource.org/licenses/MIT)
 
-A professional INI file parser for Node.js with full CLI support. Parse INI configuration files into structured JavaScript objects with support for sections, multi-line values, comments, and global keys.
+<!-- Coverage badge: To be added after configuring Codecov/Coveralls in CI/CD -->
+<!-- Recommended actions:
+     - https://github.com/marketplace/actions/coverage-badges-generation-action
+     - https://github.com/marketplace/actions/jest-coverage-report
+-->
+
+A professional INI file parser for Node.js with CLI support. Parse INI configuration files into structured JavaScript objects with support for sections, multi-line values, comments and global keys.
 
 ---
 
@@ -61,17 +66,6 @@ npm install @notfounnd/ini-parser
 ### As a CLI Tool
 ```bash
 npm install -g @notfounnd/ini-parser
-```
-
-### Install from GitHub
-> **Note**: This package is not yet published on NPM. Install directly from GitHub:
-
-```bash
-# As a dependency
-npm install github:notfounnd/ini-parser
-
-# As a global CLI tool
-npm install -g github:notfounnd/ini-parser
 ```
 
 ---
@@ -379,9 +373,56 @@ ini-parser/
 │   ├── lib/          # Library code (parser.js)
 │   └── cli/          # CLI implementation
 ├── test/             # Test suites
-├── docs/             # Documentation (future)
+├── docs/             # Documentation
 └── package.json
 ```
+
+### CI/CD & Workflows
+
+This project uses **GitHub Actions** for continuous integration and deployment with a **Trunk-Based Development** strategy.
+
+#### Workflow Triggers
+
+- **Feature CI** (`ci-feature.yml`): Runs on push to any branch except `master`
+  - Tests on Node.js 18.x, 20.x, 22.x
+  - Runs ESLint, Prettier, and Jest tests
+
+- **Master CI/CD** (`ci-master.yml`): Runs on push to `master` (via PR merge)
+  - Tests on Node.js 18.x, 20.x, 22.x
+  - Builds production artifact (.tgz) with Node.js 22.x
+  - Runs E2E tests with installed package (8 tests)
+
+- **Release** (`release.yml`): Manual trigger only (`workflow_dispatch`)
+  - Calculates version from conventional commits
+  - Generates/updates CHANGELOG.md
+  - Publishes to NPM
+  - Creates GitHub Release
+
+#### Branch Protection Rules
+
+The `master` branch is protected with the following rules:
+
+- ✅ **Squash merge only** (maintains linear history)
+- ✅ **Pull request required** (no direct pushes)
+- ✅ **Status checks required** (CI must pass)
+- ✅ **Branches must be up to date**
+- ✅ **Conversation resolution required**
+- ✅ **Rules enforced for administrators**
+
+#### Release Process
+
+This project follows **Trunk-Based Development** with manual releases:
+
+1. **Development**: Work on feature branches
+2. **Pull Request**: Squash merge to `master` (triggers Master CI/CD)
+3. **Release**: Manual workflow trigger with dry-run option
+4. **Automation**: `release-it` handles versioning, changelog, and publishing
+
+**Release Strategy**:
+- Version calculated from conventional commits (feat → MINOR, fix → PATCH)
+- Changelog auto-generated from commit history
+- Package built and tested with E2E validation before release
+- GitHub Release created with changelog notes
 
 ---
 

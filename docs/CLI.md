@@ -56,12 +56,6 @@ Install the CLI globally to use the `ini-parser` command from anywhere:
 npm install -g @notfounnd/ini-parser
 ```
 
-Or install directly from GitHub (since the package is not yet published on NPM):
-
-```bash
-npm install -g github:notfounnd/ini-parser
-```
-
 After global installation, the `ini-parser` command will be available system-wide:
 
 ```bash

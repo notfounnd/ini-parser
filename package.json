@@ -26,6 +26,10 @@
     "ini-file",
     "cli"
   ],
+  "files": [
+    "bin/",
+    "src/"
+  ],
   "main": "src/lib/parser.js",
   "bin": {
     "ini-parser": "bin/ini-parser.js"
