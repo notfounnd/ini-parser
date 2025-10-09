@@ -316,35 +316,72 @@ A Subfase 4.4 foi concluída com sucesso. O workflow de Release Manual foi criad
 
 ---
 
-## Subfase 4.5 - Configuração do GitHub Repository
+## Subfase 4.5 - Configuração do GitHub Repository ⏳ (Em Andamento)
 
 ### Objetivo
 Configurar settings do repositório GitHub para forçar Squash Merge e proteger branch master.
 
 ### Ações
-- [ ] **Configurar Squash Merge**:
+- [x] **Configurar Squash Merge**:
   - GitHub → Settings → General → Pull Requests
   - ✅ Marcar: "Allow squash merging"
   - ✅ Default: "Default to pull request title and description"
   - ❌ Desmarcar: "Allow merge commits"
   - ❌ Desmarcar: "Allow rebase merging"
-- [ ] **Configurar Branch Protection (master)**:
+- [x] **Configurar Branch Protection (master)** *(parcialmente)*:
   - GitHub → Settings → Branches → Add branch protection rule
-  - Branch name pattern: `master`
-  - ✅ Require a pull request before merging
-  - ✅ Require approvals: 0 (ou 1 se preferir)
-  - ✅ Require status checks to pass before merging
-    - ✅ Require branches to be up to date before merging
-    - Status checks: Selecionar jobs do `ci-feature.yml` (test-and-validate)
-  - ✅ Require conversation resolution before merging
-  - ❌ Do not allow bypassing the above settings
-- [ ] Validar configurações fazendo um PR de teste
+  - Branch name pattern: `master` ✅
+  - ✅ Require a pull request before merging ✅
+  - ✅ Require approvals: 0 ✅
+  - ⏳ Require status checks to pass before merging *(pendente - aguardando primeiro workflow run)*
+    - ✅ Require branches to be up to date before merging ✅
+    - ⏳ Status checks: Selecionar `test-and-validate` do `ci-feature.yml` *(pendente)*
+  - ✅ Require conversation resolution before merging ✅
+  - ✅ Do not allow bypassing the above settings ✅
+- [ ] Validar configurações fazendo um PR de teste *(em andamento)*
+
+### Resultados Parciais
+- ✅ **Squash Merge configurado corretamente**:
+  - Squash merging: Habilitado
+  - Default message: "Pull request title and description"
+  - Merge commits: Desabilitado
+  - Rebase merging: Desabilitado
+
+- ✅ **Branch Protection configurada (parcial)**:
+  - Branch pattern: `master`
+  - Require pull request: Habilitado
+  - Require approvals: 0 (sem aprovação obrigatória)
+  - Require branches up to date: Habilitado
+  - Require conversation resolution: Habilitado
+  - Do not allow bypassing: Habilitado (incluindo administradores)
+
+- ⏳ **Status checks pendentes**:
+  - Status checks só aparecem após primeiro workflow run
+  - Workflow `ci-feature.yml` ainda não foi executado
+  - Job `test-and-validate` será adicionado aos required checks após primeiro PR
 
 ### Critérios de Conclusão
-- [ ] Squash merge é o único método disponível
-- [ ] PRs para master requerem CI passing
-- [ ] Branch master protegida contra push direto
-- [ ] Configurações validadas com PR de teste
+- [x] Squash merge é o único método disponível
+- [ ] PRs para master requerem CI passing *(aguardando adicionar status check)*
+- [x] Branch master protegida contra push direto
+- [ ] Configurações validadas com PR de teste *(em andamento)*
+
+### Notas
+- 🔄 **Status Checks Pendentes**: Os status checks (como `test-and-validate` do `ci-feature.yml`) só aparecem na interface do GitHub **após o primeiro workflow run**. Será necessário:
+  1. Abrir PR de teste para master
+  2. Aguardar CI rodar
+  3. Voltar em Settings → Branches → Edit rule
+  4. Adicionar `test-and-validate` aos required status checks
+
+- ✅ **Do Not Allow Bypassing**: Configurado como **habilitado** (marcado), o que significa que nem administradores podem burlar as regras de branch protection. Isso garante:
+  - Processo de PR sempre seguido (evita push direto acidental)
+  - CI sempre executa antes de merge
+  - Histórico limpo com squash merge garantido
+
+- 🎯 **Branch de Teste Criada**: Uma nova branch foi criada para validar os workflows e completar a configuração dos status checks.
+
+### Resumo do Status
+A Subfase 4.5 está **parcialmente concluída**. A configuração de Squash Merge e a maior parte da Branch Protection foram implementadas com sucesso. A etapa final (adicionar required status checks) será completada após o primeiro PR executar o workflow `ci-feature.yml`, permitindo que o job `test-and-validate` apareça como opção de status check obrigatório.
 
 ---
 
@@ -501,9 +538,9 @@ Após conclusão da FASE 04:
 ✅ Subfase 4.2 - ci-feature.yml criado
 ✅ Subfase 4.3 - ci-master.yml criado
 ✅ Subfase 4.4 - release.yml criado
-⬜ Subfase 4.5 - GitHub repo configurado
+⏳ Subfase 4.5 - GitHub repo configurado (parcial - aguardando status checks)
 ❌ Subfase 4.6 - Artifact latest (Não Aplicável)
-⬜ Subfase 4.7 - Testes CI/CD completos
+⏳ Subfase 4.7 - Testes CI/CD completos (em andamento)
 ⬜ Subfase 4.8 - README atualizado
 ```
 
