@@ -30,18 +30,7 @@
 * setup project ([e5c9a3a](https://github.com/notfounnd/ini-parser/commit/e5c9a3aeae43b9ed0d8484f0f1074d809f4d8673))
 * update workflow config ([#4](https://github.com/notfounnd/ini-parser/issues/4)) ([edeee2e](https://github.com/notfounnd/ini-parser/commit/edeee2e6a49741eae9bc0559ce3719c09de33adc))
 
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
----
-
-## [Unreleased]
-
----
-
-## [1.0.0] - 2025-01-06
+## 1.0.0 (2025-01-06) - Test Release
 
 ### Added
 - **Core Parser Library** (`src/lib/parser.js`)
@@ -115,10 +104,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 - Nothing (initial release)
-
----
-
-## Version Links
-
-[Unreleased]: https://github.com/notfounnd/ini-parser/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/notfounnd/ini-parser/releases/tag/v1.0.0
