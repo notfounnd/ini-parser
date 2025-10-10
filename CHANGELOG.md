@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.8.0 (2025-10-10)
+
+### Features
+
+* fase_01 - add lib parser ([5a3d06b](https://github.com/notfounnd/ini-parser/commit/5a3d06bc91c6aa28e4efb012833f24e477cb101c))
+* fase_02 - add cli tool ([c7e2d55](https://github.com/notfounnd/ini-parser/commit/c7e2d558db4227389c392b644db958cf19e3689c))
+
+### Bug Fixes
+
+* fase_04 - correct e2e test script execution path ([#2](https://github.com/notfounnd/ini-parser/issues/2)) ([fffcb0c](https://github.com/notfounnd/ini-parser/commit/fffcb0c5b254eb6297d114c55df0e7719b7833f2))
+* meta option logic ([8788997](https://github.com/notfounnd/ini-parser/commit/87889971d287ab0c42a7970817e2540dc1ee84fe))
+
+### Documentation
+
+* fase_03 - add project docs ([6a78c81](https://github.com/notfounnd/ini-parser/commit/6a78c8116b7e272414a52908f415e376e8c77fa3))
+* fase_04 - review readme and add pull request template ([#3](https://github.com/notfounnd/ini-parser/issues/3)) ([eb9c47b](https://github.com/notfounnd/ini-parser/commit/eb9c47bb1d008660b027639ebecbabb9759c1f9e))
+* remove FASE_02.md in root project ([2f91218](https://github.com/notfounnd/ini-parser/commit/2f9121843257dfb1bb57f9b13858fc587598dc8f))
+* update documentation guidelines in CONTRIBUTING.md ([d476efe](https://github.com/notfounnd/ini-parser/commit/d476efea1cb6a3424de31a7114e145f8c0f9a125))
+
+### Misc
+
+* bump package version ([97c5a32](https://github.com/notfounnd/ini-parser/commit/97c5a324841752a99b92d017c60fa5909868f48d))
+* bump package version ([c4d4404](https://github.com/notfounnd/ini-parser/commit/c4d440486bb09441142a29bb2f73496fe14d7cdc))
+* bump package version ([504fab1](https://github.com/notfounnd/ini-parser/commit/504fab1d2274eafca0f349bff081f4056ef77058))
+* bump package version ([2e62227](https://github.com/notfounnd/ini-parser/commit/2e62227f6117203460ce0cb8d61c8708f414da3e))
+* fase_04 - check setup github actions ([#1](https://github.com/notfounnd/ini-parser/issues/1)) ([a01b369](https://github.com/notfounnd/ini-parser/commit/a01b3690054e38521fc424118b9812452dbc1200))
+* fase_04 - setup github actions ([1954913](https://github.com/notfounnd/ini-parser/commit/195491331a36c5275b6a93e0fa0d24508944b3fd))
+* setup project ([e5c9a3a](https://github.com/notfounnd/ini-parser/commit/e5c9a3aeae43b9ed0d8484f0f1074d809f4d8673))
+* update workflow config ([#4](https://github.com/notfounnd/ini-parser/issues/4)) ([edeee2e](https://github.com/notfounnd/ini-parser/commit/edeee2e6a49741eae9bc0559ce3719c09de33adc))
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
