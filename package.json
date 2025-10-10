@@ -1,6 +1,6 @@
 {
   "name": "@notfounnd/ini-parser",
-  "version": "1.2.1",
+  "version": "1.6.1",
   "description": "A professional INI file parser for Node.js with CLI support",
   "author": "Júnior Sbrissa",
   "license": "MIT",
