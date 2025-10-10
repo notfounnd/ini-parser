@@ -15,6 +15,9 @@ NC='\033[0m' # No Color
 PASSED=0
 FAILED=0
 
+# Get current version from package.json
+PACKAGE_VERSION=$(grep -oP '(?<="version": ")[^"]*' ../../package.json)
+
 # Clean and prepare temp directory
 rm -rf temp
 mkdir -p temp
@@ -111,7 +114,7 @@ run_test \
   "ini-parser --version" \
   0 \
   "temp/test6-version.txt" \
-  "grep -q '1.0.0' temp/test6-version.txt"
+  "grep -q '$PACKAGE_VERSION' temp/test6-version.txt"
 
 # Test 7: Non-existent file (expected error)
 run_test \
